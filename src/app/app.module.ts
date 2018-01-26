@@ -7,16 +7,20 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebaseService } from './services/firebase-service.service';
 import { AngularFireModule} from 'angularfire2';
 import { firebaseConfig } from '../environments/firebase.config';
+import { HomeComponent } from './components/home/home.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AppRoutingModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
