@@ -9,12 +9,14 @@ import { AngularFireModule} from 'angularfire2';
 import { firebaseConfig } from '../environments/firebase.config';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { CategoryLanguageComponent } from './components/category-language/category-language.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CategoryLanguageComponent
   ],
   imports: [
     BrowserModule,
