@@ -13,6 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryLanguageComponent } from './components/category-language/category-language.component';
 import { AddCategoryLanguageComponent } from './components/add-category-language/add-category-language.component';
 import { ModalService } from './services/modal.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ModalService } from './services/modal.service';
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule
   ],
   providers: [FirebaseService, ModalService],
   bootstrap: [AppComponent],

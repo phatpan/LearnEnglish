@@ -1,3 +1,4 @@
+<form #addForm="ngForm" (ngSubmit)="add(addForm)" novalidate>
 <div class="modal-header">
     <span class="modal-title" id="dismiss-modal-title">ประเภทของภาษา</span>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
@@ -5,17 +6,16 @@
     </button>
 </div>
 <div class="modal-body">
-    <form>
       <div class="form-group">
         <label>ชื่อ: </label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" name="name" ngModel placeholder="ชื่อ">
       </div>
       <div class="form-group">
         <label>รายละเอียด:</label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" name="description" ngModel  placeholder="รายละเอียด">
       </div>
-    </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" id="dismiss-modal-button" name="ok" (click)="activeModal.close()">ตกลง</button>
+    <button type="submit" class="btn btn-primary" id="dismiss-modal-button" name="ok">ตกลง</button>
 </div>
+</form>
