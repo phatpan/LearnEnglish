@@ -11,11 +11,15 @@ import { HomeComponent } from '../home/home.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { User, ProfileInfo } from '../../model/user-info';
+import { Router } from '@angular/router';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let firebaseService: FirebaseService;
+  const mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -29,7 +33,8 @@ describe('LoginComponent', () => {
       ],
       providers: [
         FirebaseService,
-        { provide: APP_BASE_HREF, useValue: '/' }]
+        { provide: APP_BASE_HREF, useValue: '/' },
+        { provide: Router, useValue: mockRouter }]
     })
       .compileComponents();
   });
@@ -45,18 +50,28 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call login with facebook when click facebook', () => {
-    let mockDataUser: User;
-    let mockData: ProfileInfo;
-    mockDataUser = {
-      displayName: 'Phatcharaphan ananpreechakun',
-      email: 'phat.pan@gmail.com'
-    };
-    mockData = {
-      user: mockDataUser
-    };
-    spyOn(firebaseService, 'loginWithFacebook').and.returnValue(Promise.resolve(mockData));
-    component.loginWithFacebook();
-    expect(firebaseService.loginWithFacebook).toHaveBeenCalled();
+  describe('click login facebook', () => {
+    beforeEach(() => {
+      let mockDataUser: User;
+      let mockData: ProfileInfo;
+      mockDataUser = {
+        displayName: 'Phatcharaphan ananpreechakun',
+        email: 'phat.pan@gmail.com'
+      };
+      mockData = {
+        user: mockDataUser
+      };
+      spyOn(firebaseService, 'loginWithFacebook').and.returnValue(Promise.resolve(mockData));
+    });
+
+    it('should call login with facebook', () => {
+      component.loginWithFacebook();
+      expect(firebaseService.loginWithFacebook).toHaveBeenCalled();
+    });
+
+    it('should redirect to /home', () => {
+      component.loginWithFacebook();
+      expect(mockRouter.navigate).toHaveBeenCalledWith(['/home']);
+    });
   });
 });
