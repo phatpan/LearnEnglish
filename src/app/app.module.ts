@@ -9,22 +9,28 @@ import { AngularFireModule} from 'angularfire2';
 import { firebaseConfig } from '../environments/firebase.config';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryLanguageComponent } from './components/category-language/category-language.component';
+import { AddCategoryLanguageComponent } from './components/add-category-language/add-category-language.component';
+import { ModalService } from './services/modal.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CategoryLanguageComponent
+    CategoryLanguageComponent,
+    AddCategoryLanguageComponent
   ],
   imports: [
     BrowserModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
-  providers: [FirebaseService],
-  bootstrap: [AppComponent]
+  providers: [FirebaseService, ModalService],
+  bootstrap: [AppComponent],
+  entryComponents: [AddCategoryLanguageComponent]
 })
 export class AppModule { }

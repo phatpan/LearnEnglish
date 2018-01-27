@@ -24,3 +24,6 @@ html, body {
 #sign-in-google,#sign-in-facebook{
   width: 20%;
 }
+button{
+  cursor: pointer;
+}

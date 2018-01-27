@@ -12,4 +12,5 @@ describe('ModalService', () => {
   it('should be created', inject([ModalService], (service: ModalService) => {
     expect(service).toBeTruthy();
   }));
+
 });

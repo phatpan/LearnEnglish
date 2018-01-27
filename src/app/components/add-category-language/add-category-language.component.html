@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <span class="modal-title" id="dismiss-modal-title">ประเภทของภาษา</span>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>ชื่อ: </label>
+        <input type="text" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>รายละเอียด:</label>
+        <input type="text" class="form-control">
+      </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" id="dismiss-modal-button" name="ok" (click)="activeModal.close()">ตกลง</button>
+</div>
