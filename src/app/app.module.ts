@@ -14,6 +14,7 @@ import { CategoryLanguageComponent } from './components/category-language/catego
 import { AddCategoryLanguageComponent } from './components/add-category-language/add-category-language.component';
 import { ModalService } from './services/modal.service';
 import { FormsModule } from '@angular/forms';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
     NgbModule.forRoot(),
-    FormsModule
+    FormsModule,
+    AngularFireDatabaseModule
   ],
   providers: [FirebaseService, ModalService],
   bootstrap: [AppComponent],
