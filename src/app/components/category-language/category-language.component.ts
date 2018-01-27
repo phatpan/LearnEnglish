@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
+import { Category } from '../../model/category';
 
 @Component({
   selector: 'app-category-language',
@@ -14,8 +15,8 @@ export class CategoryLanguageComponent implements OnInit {
   }
 
   add() {
-    this.modalService.addCategoryLanguageModal().result.then(() => {
-
-    });
+    this.modalService.addCategoryLanguageModal().result.then((data: Category) => {
+      console.log(data.name);
+    }, () => { });
   }
 }

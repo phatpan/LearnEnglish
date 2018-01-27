@@ -17,7 +17,8 @@ export class AddCategoryLanguageComponent implements OnInit {
 
   add(data: NgForm) {
     if (data.valid) {
-     this.activeModal.close(data.value);
+     this.category = data.value;
+     this.activeModal.close(this.category);
     }
   }
 }
