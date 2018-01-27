@@ -15,6 +15,7 @@ import { AddCategoryLanguageComponent } from './components/add-category-language
 import { ModalService } from './services/modal.service';
 import { FormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { SentenceComponent } from './components/sentence/sentence.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     LoginComponent,
     HomeComponent,
     CategoryLanguageComponent,
-    AddCategoryLanguageComponent
+    AddCategoryLanguageComponent,
+    SentenceComponent
   ],
   imports: [
     BrowserModule,
