@@ -1,16 +1,22 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { FirebaseServiceService } from './firebase-service.service';
+import { FirebaseService } from './firebase-service.service';
 import { ServiceBuilder } from 'selenium-webdriver/chrome';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from '../../environments/firebase.config';
 
-describe('FirebaseServiceService', () => {
+describe('FirebaseService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [FirebaseServiceService]
+      providers: [FirebaseService],
+      imports: [
+        AngularFireAuthModule,
+        AngularFireModule.initializeApp(firebaseConfig)]
     });
   });
 
-  it('should be created', inject([FirebaseServiceService], (service: FirebaseServiceService) => {
+  it('should be created', inject([FirebaseService], (service: FirebaseService) => {
     expect(service).toBeTruthy();
   }));
 
