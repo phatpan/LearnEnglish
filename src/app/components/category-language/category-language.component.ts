@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
-import { Category } from '../../model/category';
+import { Category, Categorys } from '../../model/category';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
@@ -10,8 +10,11 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./category-language.component.css']
 })
 export class CategoryLanguageComponent implements OnInit {
-  category: Observable<any[]>;
-  constructor(private modalService: ModalService, private db: AngularFireDatabase) { }
+  categorys: AngularFireList<Category>;
+  category: Categorys[];
+  constructor(private modalService: ModalService, private db: AngularFireDatabase) {
+    this.categorys = db.list('category');
+  }
 
   ngOnInit() {
     this.getCategoryLanguage();
@@ -19,11 +22,20 @@ export class CategoryLanguageComponent implements OnInit {
 
   add() {
     this.modalService.addCategoryLanguageModal().result.then((data: Category) => {
-      this.db.list('category').push(data);
+      this.categorys.push(data);
     }, () => { });
   }
 
   getCategoryLanguage() {
-    this.category = this.db.list('category').valueChanges();
+    this.categorys.snapshotChanges().map(actions => {
+      return actions.map(action => ({ key: action.key, value: action.payload.val() }));
+    }).subscribe(items => {
+      this.category = items;
+    });
+  }
+
+  delete(data: Categorys) {
+    this.categorys.remove(data.key).then(() => {
+    });
   }
 }
