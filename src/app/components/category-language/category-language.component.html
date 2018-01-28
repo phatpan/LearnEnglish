@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let data of category; let i =index">
-          <td><button type="button"  class="btn btn-primary" (click)="delete(data)">ลบ</button>  </td>
+          <td><button type="button"  class="btn btn-danger" (click)="delete(data)">ลบ</button>  </td>
           <td>{{i+1}}</td>
           <td>{{data.value.name}}</td>
           <td>{{data.value.description}}</td>

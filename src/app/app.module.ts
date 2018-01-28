@@ -16,6 +16,7 @@ import { ModalService } from './services/modal.service';
 import { FormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { SentenceComponent } from './components/sentence/sentence.component';
+import { ComfirmationComponent } from './components/comfirmation/comfirmation.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SentenceComponent } from './components/sentence/sentence.component';
     HomeComponent,
     CategoryLanguageComponent,
     AddCategoryLanguageComponent,
-    SentenceComponent
+    SentenceComponent,
+    ComfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,6 @@ import { SentenceComponent } from './components/sentence/sentence.component';
   ],
   providers: [FirebaseService, ModalService],
   bootstrap: [AppComponent],
-  entryComponents: [AddCategoryLanguageComponent]
+  entryComponents: [AddCategoryLanguageComponent, ComfirmationComponent]
 })
 export class AppModule { }

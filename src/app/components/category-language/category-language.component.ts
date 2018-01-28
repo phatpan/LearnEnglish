@@ -35,7 +35,8 @@ export class CategoryLanguageComponent implements OnInit {
   }
 
   delete(data: Categorys) {
-    this.categorys.remove(data.key).then(() => {
-    });
+    this.modalService.comfirmationModal('จัดการข้อมูลกลุ่มของการเรียนภาษา', 'คุณต้องการลบข้อมูลหรือไม่ ?').result.then(() => {
+      this.categorys.remove(data.key);
+    }, () => { });
   }
 }
