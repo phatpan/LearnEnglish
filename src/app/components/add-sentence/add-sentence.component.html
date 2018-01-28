@@ -1,0 +1,26 @@
+<form #addForm="ngForm" (ngSubmit)="add(addForm)" novalidate>
+    <div class="modal-header">
+        <span class="modal-title" id="dismiss-modal-title">จัดการข้อมูลประโยค</span>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+          <div class="form-group">
+            <label>ชื่อกลุ่มการเรียนภาษา: </label>
+            <select id="category" name="category" class="form-control">
+                <option selected value="">โปรดเลือก</option>
+                <!-- <option [ngValue]="lov.key" *ngFor="let lov of listofvalue.residential_type">
+                    {{lov.value_th}}
+                </option> -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label>ประโยค:</label>
+            <input type="text" class="form-control" name="sentence" ngModel  placeholder="ประโยค">
+          </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" id="dismiss-modal-button" name="ok">ตกลง</button>
+    </div>
+    </form>

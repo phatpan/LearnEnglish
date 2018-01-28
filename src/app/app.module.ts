@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebaseService } from './services/firebase-service.service';
-import { AngularFireModule} from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from '../environments/firebase.config';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { SentenceComponent } from './components/sentence/sentence.component';
 import { ComfirmationComponent } from './components/comfirmation/comfirmation.component';
+import { AddSentenceComponent } from './components/add-sentence/add-sentence.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ComfirmationComponent } from './components/comfirmation/comfirmation.co
     CategoryLanguageComponent,
     AddCategoryLanguageComponent,
     SentenceComponent,
-    ComfirmationComponent
+    ComfirmationComponent,
+    AddSentenceComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,10 @@ import { ComfirmationComponent } from './components/comfirmation/comfirmation.co
   ],
   providers: [FirebaseService, ModalService],
   bootstrap: [AppComponent],
-  entryComponents: [AddCategoryLanguageComponent, ComfirmationComponent]
+  entryComponents: [
+    AddCategoryLanguageComponent,
+    ComfirmationComponent,
+    AddSentenceComponent
+  ]
 })
 export class AppModule { }

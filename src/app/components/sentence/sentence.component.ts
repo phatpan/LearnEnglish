@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-sentence',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SentenceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit() {
   }
 
+  add() {
+    this.modalService.addSentenceModal().result.then(() => {
+      console.log('success');
+    }, () => { });
+  }
 }
