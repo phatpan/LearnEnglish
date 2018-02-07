@@ -3,14 +3,17 @@ import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { AddCategoryLanguageComponent } from '../components/add-category-language/add-category-language.component';
 import { ComfirmationComponent } from '../components/comfirmation/comfirmation.component';
 import { AddSentenceComponent } from '../components/add-sentence/add-sentence.component';
+import { Category } from '../model/category';
 
 @Injectable()
 export class ModalService {
 
   constructor(private modalService: NgbModal) { }
 
-  addCategoryLanguageModal(): NgbModalRef {
-    return this.modalService.open(AddCategoryLanguageComponent);
+  categoryLanguageModal(dataEdit?: Categorys): NgbModalRef {
+    const modal = this.modalService.open(AddCategoryLanguageComponent);
+    modal.componentInstance.dataEdit = dataEdit;
+    return modal;
   }
 
   addSentenceModal() {

@@ -21,8 +21,8 @@ export class CategoryLanguageComponent implements OnInit {
   }
 
   add() {
-    this.modalService.addCategoryLanguageModal().result.then((data: Category) => {
-      this.categoryList.push(data);
+    this.modalService.categoryLanguageModal().result.then((response: Categorys) => {
+      this.categoryList.push(response.value);
     }, () => { });
   }
 
@@ -36,7 +36,13 @@ export class CategoryLanguageComponent implements OnInit {
 
   delete(data: Categorys) {
     this.modalService.comfirmationModal('จัดการข้อมูลกลุ่มของการเรียนภาษา', 'คุณต้องการลบข้อมูลหรือไม่ ?').result.then(() => {
-      // this.categorys.remove(data.key);
+      this.categoryList.remove(data.key);
+    }, () => { });
+  }
+
+  edit(data: Categorys) {
+    this.modalService.categoryLanguageModal(data).result.then((response: Categorys) => {
+      this.categoryList.update(response.key, response.value);
     }, () => { });
   }
 }
