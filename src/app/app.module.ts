@@ -33,11 +33,11 @@ import { AddSentenceComponent } from './components/add-sentence/add-sentence.com
   imports: [
     BrowserModule,
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AppRoutingModule,
     NgbModule.forRoot(),
-    FormsModule,
-    AngularFireDatabaseModule
+    FormsModule
   ],
   providers: [FirebaseService, ModalService],
   bootstrap: [AppComponent],

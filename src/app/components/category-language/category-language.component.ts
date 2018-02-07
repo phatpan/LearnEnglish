@@ -10,10 +10,10 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./category-language.component.css']
 })
 export class CategoryLanguageComponent implements OnInit {
-  categorys: AngularFireList<Category>;
+  categoryList: AngularFireList<Category>;
   category: Categorys[];
   constructor(private modalService: ModalService, private db: AngularFireDatabase) {
-    this.categorys = db.list('category');
+    this.categoryList = db.list('category');
   }
 
   ngOnInit() {
@@ -22,12 +22,12 @@ export class CategoryLanguageComponent implements OnInit {
 
   add() {
     this.modalService.addCategoryLanguageModal().result.then((data: Category) => {
-      this.categorys.push(data);
+      this.categoryList.push(data);
     }, () => { });
   }
 
   getCategoryLanguage() {
-    this.categorys.snapshotChanges().map(actions => {
+    this.categoryList.snapshotChanges().map(actions => {
       return actions.map(action => ({ key: action.key, value: action.payload.val() }));
     }).subscribe(items => {
       this.category = items;
@@ -36,7 +36,7 @@ export class CategoryLanguageComponent implements OnInit {
 
   delete(data: Categorys) {
     this.modalService.comfirmationModal('จัดการข้อมูลกลุ่มของการเรียนภาษา', 'คุณต้องการลบข้อมูลหรือไม่ ?').result.then(() => {
-      this.categorys.remove(data.key);
+      // this.categorys.remove(data.key);
     }, () => { });
   }
 }
