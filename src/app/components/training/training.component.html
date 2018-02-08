@@ -1,3 +1,35 @@
-<p>
-  training works!
-</p>
+<div class="container-fluid">
+  <div class="row-fluid">
+      <div class="col-lg-4 centering form-group" *ngIf="!sentence">
+        <label>เลือกกลุ่มการเรียนภาษา </label>
+        <select id="category" name="category" (change)="searchSentenceByCategory($event)" ngModel class="form-control">
+            <option selected value="">โปรดเลือก</option>
+            <option [value]="cate.key" *ngFor="let cate of category">
+                {{cate.value.name}}
+            </option>
+        </select>
+      </div>
+
+      <div class="col-lg-4 centering" *ngIf="sentence && initialStep <= sentence?.length">
+        <div class="form-group">
+          <label>ประโยค:</label>
+          <b>{{sentenceDisplay?.name}}</b>
+        </div>
+        <div class="form-group">
+          <label>คําแปลภาษาไทย:</label>
+          <b>{{sentenceDisplay?.thaiTranslation}}</b>
+        </div>
+        <div class="form-group">
+          <label>คำอ่าน:</label>
+          <b>{{sentenceDisplay?.read}}</b>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary text-white" (click)="nextSentence(initialStep)">ต่อไป</button>
+        </div>
+      </div>
+
+      <div class="col-lg-4 centering" *ngIf="initialStep > sentence?.length && sentence">
+        <button type="button" class="btn btn-primary text-white" (click)="newStep()">จบแล้ว กลับไปเลือกกลุ่มการเรียนภาษาใหม่</button>
+      </div>
+  </div>
+</div>
