@@ -8,7 +8,7 @@
     <div class="modal-body">
           <div class="form-group">
             <label>ชื่อกลุ่มการเรียนภาษา: </label>
-            <select id="category" name="category" ngModel class="form-control">
+            <select id="category" name="category" ngModel [(ngModel)]="categoryKey" class="form-control">
                 <option selected value="">โปรดเลือก</option>
                 <option [ngValue]="cate.key" *ngFor="let cate of category">
                     {{cate.value.name}}
@@ -17,7 +17,15 @@
           </div>
           <div class="form-group">
             <label>ประโยค:</label>
-            <input type="text" class="form-control" name="sentence" ngModel  placeholder="ประโยค">
+            <input type="text" class="form-control" name="name" ngModel [ngModel]="dataEdit?.value.name"   placeholder="ประโยค">
+          </div>
+          <div class="form-group">
+            <label>คําแปลภาษาไทย:</label>
+            <input type="text" class="form-control" name="thaiTranslation" ngModel [ngModel]="dataEdit?.value.thaiTranslation"  placeholder="คําแปลภาษาไทย">
+          </div>
+          <div class="form-group">
+            <label>คำอ่าน:</label>
+            <input type="text" class="form-control" name="read" ngModel [ngModel]="dataEdit?.value.read"  placeholder="คำอ่าน">
           </div>
     </div>
     <div class="modal-footer">

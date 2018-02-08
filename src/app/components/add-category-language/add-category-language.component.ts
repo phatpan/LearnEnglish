@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Category, Categorys } from '../../model/category';
+import { Category, CategoryInfo } from '../../model/category';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -9,24 +9,16 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./add-category-language.component.css']
 })
 export class AddCategoryLanguageComponent implements OnInit {
-  @Input() dataEdit: Categorys;
-  category: Categorys;
+  @Input() dataEdit: CategoryInfo;
+  category: CategoryInfo;
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
-    if (this.dataEdit) {
-      this.category = this.dataEdit;
-    }
   }
 
   add(data: NgForm) {
     if (data.valid) {
-      this.category = {} as Categorys;
-      this.category.value = data.value;
-      if (this.dataEdit) {
-        this.category.key = this.dataEdit.key;
-      }
-      this.activeModal.close(this.category);
+      this.activeModal.close(data.value);
     }
   }
 }

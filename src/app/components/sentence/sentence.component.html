@@ -2,17 +2,35 @@
 <div class="container">
     <h2>จัดการข้อมูลประโยคในกลุ่มของการเรียนภาษา</h2>
     <button type="button"  class="btn btn-primary" (click)="add()">เพิ่มข้อมูล</button>     
+    <div class="form-group">
+      <label>ค้นหาชื่อกลุ่มการเรียนภาษา: </label>
+      <select id="category" name="category" (change)="searchSentenceByCategory($event)" ngModel class="form-control">
+          <option selected value="">โปรดเลือก</option>
+          <option [value]="cate.key" *ngFor="let cate of category">
+              {{cate.value.name}}
+          </option>
+      </select>
+    </div>
     <table class="table table-hover">
       <thead>
         <tr>
           <th></th>
           <th>รหัส</th>
-          <th>ชื่อกลุ่มการเรียนภาษา</th>
           <th>ประโยค</th>
+          <th>คําแปลภาษาไทย</th>
+          <th>คำอ่าน</th>
         </tr>
       </thead>
       <tbody>
-
+        <tr *ngFor="let data of sentence; let i =index">
+          <td>
+            <button type="button"  class="btn btn-primary" (click)="edit(data)">แก้ไข</button>
+            <button type="button"  class="btn btn-danger" (click)="delete(data)">ลบ</button>  </td>
+          <td>{{i+1}}</td>
+          <td>{{data.value.name}}</td>
+          <td>{{data.value.thaiTranslation}}</td>
+          <td>{{data.value.read}}</td>
+        </tr>
       </tbody>
     </table>
     <a class="btn btn-danger" [routerLink]="['/home']"  role="button">ไปยังหน้าแรก</a>

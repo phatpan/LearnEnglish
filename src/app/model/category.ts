@@ -1,4 +1,4 @@
-export interface Categorys {
+export interface CategoryInfo {
     key: string;
     value: Category;
 }
@@ -8,7 +8,14 @@ export interface Category {
     description: string;
 }
 
+export interface SentenceInfo {
+    key: string;
+    value: Sentence;
+}
+
 export interface Sentence {
-    sentence: string;
     category: string;
+    name: string;
+    thaiTranslation: string;
+    read: string;
 }

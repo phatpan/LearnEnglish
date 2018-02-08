@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../../services/modal.service';
-import { Category, Categorys } from '../../model/category';
+import { Category, CategoryInfo } from '../../model/category';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class CategoryLanguageComponent implements OnInit {
   categoryList: AngularFireList<Category>;
-  category: Categorys[];
+  category: CategoryInfo[];
   constructor(private modalService: ModalService, private db: AngularFireDatabase) {
     this.categoryList = db.list('category');
   }
@@ -21,8 +21,8 @@ export class CategoryLanguageComponent implements OnInit {
   }
 
   add() {
-    this.modalService.categoryLanguageModal().result.then((response: Categorys) => {
-      this.categoryList.push(response.value);
+    this.modalService.categoryLanguageModal().result.then((response: Category) => {
+      this.categoryList.push(response);
     }, () => { });
   }
 
@@ -34,15 +34,15 @@ export class CategoryLanguageComponent implements OnInit {
     });
   }
 
-  delete(data: Categorys) {
+  delete(data: CategoryInfo) {
     this.modalService.comfirmationModal('จัดการข้อมูลกลุ่มของการเรียนภาษา', 'คุณต้องการลบข้อมูลหรือไม่ ?').result.then(() => {
       this.categoryList.remove(data.key);
     }, () => { });
   }
 
-  edit(data: Categorys) {
-    this.modalService.categoryLanguageModal(data).result.then((response: Categorys) => {
-      this.categoryList.update(response.key, response.value);
+  edit(data: CategoryInfo) {
+    this.modalService.categoryLanguageModal(data).result.then((response: Category) => {
+      this.categoryList.update(data.key, response);
     }, () => { });
   }
 }
