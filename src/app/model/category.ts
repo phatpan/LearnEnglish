@@ -7,3 +7,8 @@ export interface Category {
     name: string;
     description: string;
 }
+
+export interface Sentence {
+    sentence: string;
+    category: string;
+}
