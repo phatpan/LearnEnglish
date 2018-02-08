@@ -18,6 +18,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { SentenceComponent } from './components/sentence/sentence.component';
 import { ComfirmationComponent } from './components/comfirmation/comfirmation.component';
 import { AddSentenceComponent } from './components/add-sentence/add-sentence.component';
+import { TrainingComponent } from './components/training/training.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AddSentenceComponent } from './components/add-sentence/add-sentence.com
     AddCategoryLanguageComponent,
     SentenceComponent,
     ComfirmationComponent,
-    AddSentenceComponent
+    AddSentenceComponent,
+    TrainingComponent
   ],
   imports: [
     BrowserModule,
